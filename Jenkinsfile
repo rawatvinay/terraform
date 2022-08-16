@@ -21,7 +21,7 @@ pipeline {
                  script{
                         dir("terraform")
                         {
-                            git "https://github.com/rawatvinay/terraformcoe.git"
+                            git "https://github.com/rawatvinay/terraform.git"
                         }
                     }
                 }
@@ -35,7 +35,7 @@ pipeline {
             }
             
             steps {
-                sh 'terraform -chdir=Terraform/env/sandbox/appserver/ init -input=false'
+                sh 'terraform -chdir=env/sandbox/appserver/ init -input=false'
                 sh 'terraform workspace select ${environment} || terraform workspace new ${environment}'
 
                 sh "terraform -chdir=Terraform/env/sandbox/appserver/ plan -input=false -out tfplan "
