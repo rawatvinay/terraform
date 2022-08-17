@@ -21,7 +21,7 @@ pipeline {
                  script{
                         dir("terraform")
                         {
-                            git "https://github.com/rawatvinay/terraform.git"
+                            git branch: 'main', credentialsId: 'b0f761c5-c059-4df9-845f-0624d4ec2dc0', url: 'https://github.com/rawatvinay/terraform.git'
                         }
                     }
                 }
