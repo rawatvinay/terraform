@@ -35,10 +35,10 @@ pipeline {
             
             steps {
                 sh 'terraform -chdir=env/sandbox/appserver/ init'
-                //sh 'terraform -chdir=env/sandbox/appserver/ workspace select ${environment} || terraform -chdir=env/sandbox/appserver/ workspace new ${environment}'
+                sh 'terraform -chdir=env/sandbox/appserver/ workspace select ${environment} || terraform -chdir=env/sandbox/appserver/ workspace new ${environment}'
 
-                sh "terraform -chdir=env/sandbox/appserver/ plan"
-                //sh 'terraform -chdir=env/sandbox/appserver/ show -no-color tfplan > tfplan.txt'
+                sh "terraform -chdir=env/sandbox/appserver/ plan -out tfplan"
+                sh 'terraform -chdir=env/sandbox/appserver/ show -no-color tfplan > tfplan.txt'
             }
         }
 
