@@ -50,7 +50,7 @@ pipeline {
             }
             
             steps {
-                sh "terraform apply -input=false tfplan"
+                sh "terraform -chdir=env/sandbox/appserver/ apply -input=false tfplan"
             }
         }
         
@@ -60,7 +60,7 @@ pipeline {
             }
         
         steps {
-           sh "terraform destroy --auto-approve"
+           sh "terraform -chdir=env/sandbox/appserver/ destroy --auto-approve"
         }
     }
 
